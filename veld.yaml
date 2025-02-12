@@ -24,11 +24,11 @@ x-veld:
         optional:
 
 services:
-  veld:
+  veld_wordembeddings_postgres_db:
     build: .
-    command: python /veld/code/REPLACE.py
+    #command: python /veld/code/REPLACE.py
     volumes:
       - ./src/:/veld/code/
-    environment:
-      REPLACE: 
+    #environment:
+    #  REPLACE: 
 
