@@ -1,34 +1,65 @@
 x-veld:
   code:
-    description:
+    description: "This is a veldified version of postgres, based on 
+      https://github.com/SteffRhes/postgres_rooted ."
     topic:
-    additional:
+      - "SQL"
+      - "relational database"
 
     input:
       - volume: /veld/input/
-        file_type:
-        content:
-        environemnt_var:
+        file_type: "conf"
+        environemnt_var: in_conf_file
+        content: "postgres configuration"
+        description: "usuallay named postgresql.conf. An automatic template is provided. 
+          Documenatation on its usage can be found here: 
+          https://www.postgresql.org/docs/current/config-setting.html"
+        default: "postgresql.conf"
+        optional: true
 
-    output:
-      - volume: /veld/output/
-        file_type:
-        content:
-        environemnt_var:
+    storage:
+      - volume: /veld/storage/
+        file_type: "postgresql data"
+
+    networks:
+      - veld_postgres
 
     config:
-      - environemnt_var:
-        description:
-        var_type:
-        default:
-        optional:
+      - environemnt_var: "POSTGRES_USER"
+        var_type: "str"
+        default: "postgres_user"
+        optional: true
+      - environemnt_var: "POSTGRES_PASSWORD"
+        var_type: "str"
+        default: "postgres_password"
+        optional: true
+      - environemnt_var: "POSTGRES_DB"
+        var_type: "str"
+        default: "postgres_db"
+        optional: true
 
 services:
-  veld:
+  veld_postgres:
     build: .
-    command: python /veld/code/REPLACE.py
     volumes:
-      - ./src/:/veld/code/
+      - ./data/storage/:/veld/storage/
+      - ./data/input/:/veld/input/
+    ports:
+      - "127.0.0.1:5432:5432"
     environment:
-      REPLACE: 
+      in_conf_file: "postgresql.conf"
+      POSTGRES_USER: "postgres_user"
+      POSTGRES_PASSWORD: "postgres_password"
+      POSTGRES_DB: "postgres_db"
+    networks:
+      - veld_postgres
+
+  debian:
+    image: debian:latest
+    networks:
+      - veld_postgres
+
+networks:
+  veld_postgres:
+    driver: bridge
 

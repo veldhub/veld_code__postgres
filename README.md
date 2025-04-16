@@ -1,6 +1,7 @@
-# ![veld code](https://raw.githubusercontent.com/veldhub/.github/refs/heads/main/images/symbol_V_letter.png) veld_code__REPLACE
+# ![veld code](https://raw.githubusercontent.com/veldhub/.github/refs/heads/main/images/symbol_V_letter.png) veld_code__postgres
 
-This repo contains [code velds](https://zenodo.org/records/13322913) encapsulating REPLACE
+This repo contains [code velds](https://zenodo.org/records/13322913) encapsulating a postgres
+instance.
 
 ## requirements
 
@@ -14,18 +15,13 @@ A code veld may be integrated into a chain veld, or used directly by adapting th
 within its yaml file and using the template folders provided in this repo. Open the respective veld 
 yaml file for more information.
 
-Run a veld with:
-```
-docker compose -f <VELD_NAME>.yaml up
-```
+**[./veld.yaml](./veld.yaml)** 
 
-## contained code velds
-
-**[./veldREPLACE.yaml](./veldREPLACE.yaml)** 
-
-REPLACE
+Starts a postgres instance. The configuration file can be adjusted at
+[./data/input/postgresql.conf](./data/input/postgresql.conf), and the postgres database is stored at
+[./data/storage/](./data/storage/).
 
 ```
-docker compose -f veldREPLACE.yaml up
+docker compose -f veld.yaml up
 ```
 
