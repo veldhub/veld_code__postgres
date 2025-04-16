@@ -1,7 +1,5 @@
 # "rooted" version of postgres (forked from version 17.4)
 
-**DON'T USE THIS, IF YOU DON'T KNOW WHAT YOU'RE DOING!**
-
 A fork of postgres source and corresponding docker setups with root-checks disabled, so that it can 
 be used more conveniently and securely in rootless container setups, where the container user is
 usually root, but mapped to the non-root host user.
