@@ -1,6 +1,6 @@
 # ![veld code](https://raw.githubusercontent.com/veldhub/.github/refs/heads/main/images/symbol_V_letter.png) veld_code__postgres
 
-This repo contains [code velds](https://zenodo.org/records/13322913) encapsulating a postgres
+This repo contains a [code veld](https://zenodo.org/records/13322913) encapsulating a postgres
 instance.
 
 ## requirements
