@@ -9,12 +9,10 @@ x-veld:
     input:
       - volume: /veld/input/
         file_type: "conf"
-        environemnt_var: in_conf_file
         content: "postgres configuration"
-        description: "usuallay named postgresql.conf. An automatic template is provided. 
-          Documenatation on its usage can be found here: 
+        description: "This volume must contain a config file named postgresql.conf! A template is 
+          provided. Documenatation on its usage can be found here: 
           https://www.postgresql.org/docs/current/config-setting.html"
-        default: "postgresql.conf"
         optional: true
 
     storage:
@@ -47,7 +45,6 @@ services:
     ports:
       - "127.0.0.1:5432:5432"
     environment:
-      in_conf_file: "postgresql.conf"
       POSTGRES_USER: "postgres_user"
       POSTGRES_PASSWORD: "postgres_password"
       POSTGRES_DB: "postgres_db"

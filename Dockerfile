@@ -42,5 +42,5 @@ ENTRYPOINT ["docker-entrypoint.sh"]
 
 STOPSIGNAL SIGINT
 EXPOSE 5432
-CMD ["bash", "-c", "postgres -c config_file=/veld/input/${in_conf_file}"]
+CMD ["postgres", "-c", "config_file=/veld/input/postgresql.conf"]
 
