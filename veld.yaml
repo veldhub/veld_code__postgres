@@ -54,11 +54,6 @@ services:
     networks:
       - veld_postgres
 
-  debian:
-    image: debian:latest
-    networks:
-      - veld_postgres
-
 networks:
   veld_postgres:
     driver: bridge
