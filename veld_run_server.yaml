@@ -51,9 +51,9 @@ services:
       POSTGRES_DB: "postgres_db"
       PSQL_HISTORY: "/veld/storage/history/psql_history"
     networks:
-      - veld_postgres
+      - veld_postgres_network
 
 networks:
-  veld_postgres:
+  veld_postgres_network:
     driver: bridge
 
