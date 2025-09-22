@@ -42,5 +42,13 @@ ENTRYPOINT ["docker-entrypoint.sh"]
 
 STOPSIGNAL SIGINT
 EXPOSE 5432
+
+RUN apt update
+RUN apt install  -y --no-install-recommends \
+  python3=3.9.2* \
+  python3-pip=20.3.4*
+RUN pip install pgcli==4.3.0
+RUN pip install psycopg[binary]==3.2.9
+
 CMD ["postgres", "-c", "config_file=/veld/input/postgresql.conf"]
 
